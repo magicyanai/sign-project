@@ -1,0 +1,18 @@
+-- 建立資料庫 ChiikawaGame
+CREATE DATABASE ChiikawaGame;
+
+-- 使用 ChiikawaGame 資料庫
+USE ChiikawaGame;
+
+--本身
+	select * from CSQAData;
+	select * from CSForm;
+	select * from Message;
+--外來
+	select * from users;
+	select * from userInfo;
+
+--清空資料表
+	TRUNCATE TABLE CSForm
+	TRUNCATE TABLE CSQAData
+	TRUNCATE TABLE Message

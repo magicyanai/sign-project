@@ -1,0 +1,35 @@
+-- 使用 ChiikawaGame 資料庫
+USE ChiikawaGame;
+
+--清空資料表
+TRUNCATE TABLE Message
+
+--查詢
+select * from Message;
+
+-- 建立 Message 表格
+
+CREATE TABLE Message (
+    MessageId INT PRIMARY KEY IDENTITY(1,1), -- 主鍵，自動增量
+	MessageformId int,						 --表單ID
+	MessageuserId int,						 -- 訊息收件者ID
+	MessagesenderId int,					 -- 訊息發送者ID
+	MessageSort NVARCHAR(30),				 -- 訊息分類
+    MessageTitle NVARCHAR(30),               -- 訊息標題
+    MessageContent NVARCHAR(300),            -- 訊息內容
+    MessageDate DATE DEFAULT GETDATE(),      -- 訊息傳送日期
+);
+
+---新增資料
+INSERT INTO Message (MessageformId, MessagesenderId, MessageuserId, MessageSort, MessageTitle, MessageContent)
+VALUES 
+(1, 2, 1, N'客服通知', N'系統更新', N'請注意系統維護，可能造成短暫中斷。'),
+(2, 3, 2, N'徵物通知', N'物品交換通知', N'您有一則新的物品交換請求，請盡快處理。'),
+(3, 4, 3, N'官方通知', N'活動公告', N'即將舉行年度特別活動，歡迎參加！'),
+(4, 5, 4, N'系統通知', N'密碼重設', N'您的密碼重設成功，請妥善保存新密碼。'),
+(5, 6, 5, N'其他通知', N'使用者問卷', N'感謝您填寫問卷，我們會持續改進服務品質。'),
+(6, 7, 6, N'客服通知', N'訂單確認', N'您的訂單已確認，感謝您的購買。'),
+(7, 8, 7, N'徵物通知', N'物品徵求成功', N'您徵求的物品已被接受，請聯繫對方完成交易。'),
+(8, 9, 8, N'官方通知', N'新功能上線', N'我們推出了全新的功能，歡迎體驗！'),
+(9, 10, 9, N'系統通知', N'服務升級', N'我們正在升級服務，感謝您的耐心等待。'),
+(10, 11, 10, N'其他通知', N'意見回覆', N'我們已收到您的建議，謝謝您的寶貴意見。');
